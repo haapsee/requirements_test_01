@@ -1,3 +1,546 @@
 {
-  "requirements": []
+  "requirements": [
+    {
+      "clarifications": [],
+      "create_date": "2025-08-16T19:08:11.618469Z",
+      "definition_of_done": [
+        "Users can see a visual representation of a Rubik's Cube (defaulting to 3x3x3).",
+        "Users can interact with the cube to perform standard rotations of faces.",
+        "The cube's state correctly updates after each rotation."
+      ],
+      "description": "The system shall provide a fully interactive 3D Rubik's Cube accessible via a web browser.",
+      "id": "FR001",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:08:11.618469Z",
+          "description": "As a user, I want to see a 3D representation of a Rubik's Cube so I can prepare to interact with it.",
+          "id": "S001.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:08:11.618469Z",
+              "description": "Set up basic HTML/CSS structure for the cube container.",
+              "id": "T001.001.001",
+              "update_date": "2025-08-16T19:08:11.618469Z"
+            },
+            {
+              "create_date": "2025-08-16T19:08:11.618469Z",
+              "description": "Implement a 3D rendering library (e.g., Three.js) to display cube faces.",
+              "id": "T001.001.002",
+              "update_date": "2025-08-16T19:08:11.618469Z"
+            },
+            {
+              "create_date": "2025-08-16T19:08:11.618469Z",
+              "description": "Define cube geometry and material properties for the initial/default cube structure.",
+              "id": "T001.001.003",
+              "update_date": "2025-08-16T19:09:08.634377Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:08:11.618469Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:12:57.135111Z"
+    },
+    {
+      "clarifications": [],
+      "create_date": "2025-08-16T19:09:08.634377Z",
+      "definition_of_done": [
+        "Users can input a cube size (N) between 1 and 100.",
+        "The user interface includes a slider, a numerical input field, and a set of commonly used preset buttons/options for size selection.",
+        "The displayed Rubik's Cube dynamically updates to the specified N x N x N size.",
+        "Basic interaction (rotation) functions correctly on the custom-sized cube."
+      ],
+      "description": "The system shall allow users to customize the size of the Rubik's Cube.",
+      "id": "FR002",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:09:08.634377Z",
+          "description": "As a user, I want to be able to set the cube size using a slider and direct number input, and also quickly select from common predefined sizes, so that I can easily switch between different cube complexities.",
+          "id": "S002.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:09:08.634377Z",
+              "description": "Implement a slider UI component for cube size selection.",
+              "id": "T002.001.001",
+              "update_date": "2025-08-16T19:11:55.270568Z"
+            },
+            {
+              "create_date": "2025-08-16T19:09:08.634377Z",
+              "description": "Add input validation to ensure the selected size is within the 1 to 100 range.",
+              "id": "T002.001.002",
+              "update_date": "2025-08-16T19:09:08.634377Z"
+            },
+            {
+              "create_date": "2025-08-16T19:09:08.634377Z",
+              "description": "Develop logic to dynamically generate the 3D cube model based on the user-selected size.",
+              "id": "T002.001.003",
+              "update_date": "2025-08-16T19:09:08.634377Z"
+            },
+            {
+              "create_date": "2025-08-16T19:09:08.634377Z",
+              "description": "Ensure the cube's internal data structure can represent arbitrary N x N x N dimensions.",
+              "id": "T002.001.004",
+              "update_date": "2025-08-16T19:09:08.634377Z"
+            },
+            {
+              "create_date": "2025-08-16T19:11:55.270568Z",
+              "description": "Implement a numerical input field for precise cube size entry, linked to the slider.",
+              "id": "T002.001.005",
+              "update_date": "2025-08-16T19:11:55.270568Z"
+            },
+            {
+              "create_date": "2025-08-16T19:11:55.270568Z",
+              "description": "Implement predefined size buttons/options (e.g., 2x2, 3x3, 4x4, 5x5).",
+              "id": "T002.001.006",
+              "update_date": "2025-08-16T19:11:55.270568Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:11:55.270568Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:11:55.270568Z"
+    },
+    {
+      "clarifications": [
+        "What constitutes 'common devices' for testing performance (e.g., specific CPU/GPU ranges, memory)?",
+        "Are there specific target metrics for 'responsiveness' (e.g., target FPS for small vs. large cubes)?",
+        "What is the definition of 'easy to achieve' in terms of development effort vs. performance gain?"
+      ],
+      "create_date": "2025-08-16T19:10:11.868733Z",
+      "definition_of_done": [
+        "The Rubik's Cube remains interactive and responsive (e.g., rotations feel smooth) for cube sizes up to 10x10x10 on a standard desktop browser.",
+        "Performance optimizations (e.g., culling, instance rendering) are implemented where they offer significant gains without substantial development overhead.",
+        "The application does not crash or freeze due to excessive memory or CPU usage for any supported cube size."
+      ],
+      "description": "The system shall be performant, balancing optimal user experience with reasonable development effort.",
+      "id": "NFR001",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:10:11.868733Z",
+          "description": "As a user, I want the cube to feel smooth and responsive during interactions, even for larger sizes, so that the experience is enjoyable.",
+          "id": "S001.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:10:11.868733Z",
+              "description": "Evaluate and select a 3D rendering strategy that balances performance and ease of implementation (e.g., Three.js, raw WebGL).",
+              "id": "T001.001.001",
+              "update_date": "2025-08-16T19:10:11.868733Z"
+            },
+            {
+              "create_date": "2025-08-16T19:10:11.868733Z",
+              "description": "Implement efficient geometry and material management for cubelets to minimize draw calls and memory footprint.",
+              "id": "T001.001.002",
+              "update_date": "2025-08-16T19:10:11.868733Z"
+            },
+            {
+              "create_date": "2025-08-16T19:10:11.868733Z",
+              "description": "Profile performance for cube sizes 3x3x3, 10x10x10, and 20x20x20 on target devices.",
+              "id": "T001.001.003",
+              "update_date": "2025-08-16T19:10:11.868733Z"
+            },
+            {
+              "create_date": "2025-08-16T19:10:11.868733Z",
+              "description": "Identify and address major performance bottlenecks if responsiveness is not met for reasonable cube sizes.",
+              "id": "T001.001.004",
+              "update_date": "2025-08-16T19:10:11.868733Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:10:11.868733Z"
+        }
+      ],
+      "type": "Non-Functional Requirement",
+      "update_date": "2025-08-16T19:10:11.868733Z"
+    },
+    {
+      "clarifications": [
+        "What types of scramble sequences should be generated (e.g., random moves, specific length, WCA notation compliance)?",
+        "Should the scrambling process be animated, or instantly applied?"
+      ],
+      "create_date": "2025-08-16T19:12:57.135111Z",
+      "definition_of_done": [
+        "A 'Scramble' button is visible and interactive.",
+        "Clicking 'Scramble' shuffles the cube into a solvable, non-solved state.",
+        "The scrambled state is unpredictable and appears random to the user."
+      ],
+      "description": "The system shall provide a mechanism to scramble the Rubik's Cube.",
+      "id": "FR003",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:12:57.135111Z",
+          "description": "As a user, I want to be able to scramble the cube with a simple action, so I can start a new puzzle challenge.",
+          "id": "S003.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Design and implement a 'Scramble' button UI element.",
+              "id": "T003.001.001",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Develop a scramble generation algorithm that produces a valid and random cube state.",
+              "id": "T003.001.002",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Apply the generated scramble to the 3D cube model and its internal state.",
+              "id": "T003.001.003",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:12:57.135111Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:12:57.135111Z"
+    },
+    {
+      "clarifications": [
+        "What precision is required for the timer (e.g., seconds, milliseconds)?",
+        "Should solve times be stored (e.g., in local storage, for a history/leaderboard)?",
+        "What triggers the timer to start and stop precisely (e.g., first move after scramble, last move to solve)?"
+      ],
+      "create_date": "2025-08-16T19:12:57.135111Z",
+      "definition_of_done": [
+        "A visible timer is displayed on the screen.",
+        "The timer automatically starts when the user makes the first move on a scrambled cube.",
+        "The timer automatically stops when the cube reaches a solved state.",
+        "The final solve time is displayed accurately upon completion."
+      ],
+      "description": "The system shall track and display the user's solve time for the Rubik's Cube.",
+      "id": "FR004",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:12:57.135111Z",
+          "description": "As a user, I want my solve time to be measured and displayed, so I can challenge myself and track my solving speed.",
+          "id": "S004.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Implement a real-time stopwatch mechanism in JavaScript.",
+              "id": "T004.001.001",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Develop logic to detect the first user interaction after a scramble to start the timer.",
+              "id": "T004.001.002",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Implement cube state checking to identify when the cube is solved and stop the timer.",
+              "id": "T004.001.003",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Display the elapsed time prominently on the user interface.",
+              "id": "T004.001.004",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:12:57.135111Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:12:57.135111Z"
+    },
+    {
+      "clarifications": [
+        "Can the auto-solving process be paused or stopped by the user once initiated?",
+        "Does the solver need to work for all custom cube sizes (1x1 to 100x100) or only standard sizes (e.g., 3x3)?"
+      ],
+      "create_date": "2025-08-16T19:12:57.135111Z",
+      "definition_of_done": [
+        "A 'Solve' button is available on the UI.",
+        "Users can select from 'Beginner-friendly', 'CFOP', and 'Fastest Solves' algorithms for auto-solving (for applicable cube sizes).",
+        "Upon activation, the cube animates through the necessary moves generated by the selected algorithm to reach a solved state.",
+        "The cube successfully reaches a solved state after the animation sequence.",
+        "The animation clearly shows each individual move in the solving algorithm.",
+        "Users can adjust the animation speed of the automatic solve."
+      ],
+      "description": "The system shall provide an automatic solving feature with animated moves and selectable algorithms.",
+      "id": "FR005",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:12:57.135111Z",
+          "description": "As a user, I want to be able to watch the cube solve itself with animated movements, so I can learn the solution steps or simply see the cube solved.",
+          "id": "S005.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Integrate a Rubik's Cube solving algorithm that generates a sequence of moves for a given state.",
+              "id": "T005.001.001",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Develop an animation engine to visually represent each move of the solving sequence.",
+              "id": "T005.001.002",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Implement a 'Solve' button to trigger the automatic solving process.",
+              "id": "T005.001.003",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:12:57.135111Z"
+        },
+        {
+          "create_date": "2025-08-16T19:16:41.535477Z",
+          "description": "As a user, I want to choose from 'Beginner-friendly', 'CFOP', and 'Fastest Solves' algorithms for the automatic solver, so I can see different solving approaches in action.",
+          "id": "S005.002",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:16:41.535477Z",
+              "description": "Implement UI elements (e.g., dropdown, radio buttons) to select the desired solving algorithm.",
+              "id": "T005.002.001",
+              "update_date": "2025-08-16T19:16:41.535477Z"
+            },
+            {
+              "create_date": "2025-08-16T19:16:41.535477Z",
+              "description": "Integrate or implement a beginner-friendly solving algorithm (e.g., Layer-by-Layer).",
+              "id": "T005.002.002",
+              "update_date": "2025-08-16T19:16:41.535477Z"
+            },
+            {
+              "create_date": "2025-08-16T19:16:41.535477Z",
+              "description": "Integrate or implement a CFOP (Cross, F2L, OLL, PLL) based solving algorithm.",
+              "id": "T005.002.003",
+              "update_date": "2025-08-16T19:16:41.535477Z"
+            },
+            {
+              "create_date": "2025-08-16T19:16:41.535477Z",
+              "description": "Integrate or implement a 'fastest solves' algorithm (e.g., Kociemba or similar optimized solver, prioritizing minimum move count).",
+              "id": "T005.002.004",
+              "update_date": "2025-08-16T19:18:07.047062Z"
+            },
+            {
+              "create_date": "2025-08-16T19:16:41.535477Z",
+              "description": "Ensure the selected algorithm is correctly applied when the 'Solve' button is pressed.",
+              "id": "T005.002.005",
+              "update_date": "2025-08-16T19:16:41.535477Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:18:07.047062Z"
+        },
+        {
+          "create_date": "2025-08-16T19:19:04.664831Z",
+          "description": "As a user, I want to adjust the animation speed of the automatic solver, so I can follow the moves at my preferred pace.",
+          "id": "S005.003",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:19:04.664831Z",
+              "description": "Implement a UI control (e.g., slider) for adjusting animation speed.",
+              "id": "T005.003.001",
+              "update_date": "2025-08-16T19:19:04.664831Z"
+            },
+            {
+              "create_date": "2025-08-16T19:19:04.664831Z",
+              "description": "Integrate the animation speed control with the cube's rotation and transition logic.",
+              "id": "T005.003.002",
+              "update_date": "2025-08-16T19:19:04.664831Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:19:04.664831Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:19:04.664831Z"
+    },
+    {
+      "clarifications": [
+        "What level of hints should be provided (e.g., single next move, entire step in an algorithm, visual highlight)?",
+        "How are hints triggered (e.g., dedicated 'Hint' button, automatically when stuck for a period)?",
+        "Should hints be based on the currently selected auto-solving algorithm, or always use a specific 'beginner-friendly' approach?",
+        "Does the hint system need to work for all custom cube sizes (1x1 to 100x100) or only standard sizes (e.g., 3x3)?"
+      ],
+      "create_date": "2025-08-16T19:12:57.135111Z",
+      "definition_of_done": [
+        "A 'Hint' button or equivalent mechanism is available.",
+        "Upon requesting a hint, the system displays the next recommended move to progress towards a solved state, based on the selected solving algorithm.",
+        "The hint provided is accurate for the current cube configuration."
+      ],
+      "description": "The system shall provide hints to assist the user in solving the cube, based on chosen algorithms.",
+      "id": "FR006",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:12:57.135111Z",
+          "description": "As a user, I want to receive hints when I am stuck, so I can learn the solving process and complete the puzzle.",
+          "id": "S006.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Implement a 'Hint' button on the user interface.",
+              "id": "T006.001.001",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Develop or integrate logic to determine the next optimal move from the current cube state.",
+              "id": "T006.001.002",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:12:57.135111Z",
+              "description": "Design and implement a way to visually or textually display the hint to the user.",
+              "id": "T006.001.003",
+              "update_date": "2025-08-16T19:12:57.135111Z"
+            },
+            {
+              "create_date": "2025-08-16T19:16:41.535477Z",
+              "description": "Ensure hints are generated based on the currently selected solving algorithm (beginner, CFOP, fastest).",
+              "id": "T006.001.004",
+              "update_date": "2025-08-16T19:16:41.535477Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:16:41.535477Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:16:41.535477Z"
+    },
+    {
+      "clarifications": [],
+      "create_date": "2025-08-16T19:21:53.409155Z",
+      "definition_of_done": [
+        "Users can rotate the entire cube around its X, Y, and Z axes using clickable arrows.",
+        "Users can rotate the entire cube around its X, Y, and Z axes using defined hotkeys (WASD and Q/E).",
+        "Rotations occur in distinct 90-degree steps.",
+        "The 3D rotations are smoothly animated.",
+        "The cube maintains its integrity and state during and after rotation."
+      ],
+      "description": "The system shall allow users to rotate the entire Rubik's Cube in 3D space.",
+      "id": "FR007",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:21:53.409155Z",
+          "description": "As a user, I want to be able to turn the entire cube in 3D space around all axes using clickable arrows and hotkeys, so I can view it from different perspectives.",
+          "id": "S007.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:21:53.409155Z",
+              "description": "Implement camera or cube rotation logic for X, Y, Z axes.",
+              "id": "T007.001.001",
+              "update_date": "2025-08-16T19:21:53.409155Z"
+            },
+            {
+              "create_date": "2025-08-16T19:21:53.409155Z",
+              "description": "Ensure rotations snap to 90-degree increments.",
+              "id": "T007.001.002",
+              "update_date": "2025-08-16T19:21:53.409155Z"
+            },
+            {
+              "create_date": "2025-08-16T19:24:32.760652Z",
+              "description": "Design and implement clickable arrow UI elements for 3D rotation (e.g., around the cube's bounding box or on a control panel).",
+              "id": "T007.001.003",
+              "update_date": "2025-08-16T19:24:32.760652Z"
+            },
+            {
+              "create_date": "2025-08-16T19:26:23.560898Z",
+              "description": "Implement keyboard hotkeys for 3D rotation (W/S for X-axis, A/D for Y-axis, Q/E for Z-axis).",
+              "id": "T007.001.004",
+              "update_date": "2025-08-16T19:26:23.560898Z"
+            },
+            {
+              "create_date": "2025-08-16T19:26:23.560898Z",
+              "description": "Ensure 3D rotation movements are smoothly animated.",
+              "id": "T007.001.005",
+              "update_date": "2025-08-16T19:26:23.560898Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:26:23.560898Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:28:29.973906Z"
+    },
+    {
+      "clarifications": [
+        "Should there be predefined color palettes for common color blindness types, or free color selection?",
+        "How will the color selection UI be presented (e.g., color pickers, dropdowns)?"
+      ],
+      "create_date": "2025-08-16T19:21:53.409155Z",
+      "definition_of_done": [
+        "A user interface option is available to change cube face colors.",
+        "Users can select new colors for each of the six faces.",
+        "The chosen colors are applied correctly to the cube faces.",
+        "The color changes persist for the current session."
+      ],
+      "description": "The system shall allow users to customize the colors of the Rubik's Cube faces.",
+      "id": "FR008",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:21:53.409155Z",
+          "description": "As a user, I want to be able to change the colors of the cube faces, so I can customize its appearance and improve accessibility if I am color-blind.",
+          "id": "S008.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:21:53.409155Z",
+              "description": "Implement a color selection interface for each cube face.",
+              "id": "T008.001.001",
+              "update_date": "2025-08-16T19:21:53.409155Z"
+            },
+            {
+              "create_date": "2025-08-16T19:21:53.409155Z",
+              "description": "Develop logic to apply selected colors to the 3D cube model.",
+              "id": "T008.001.002",
+              "update_date": "2025-08-16T19:21:53.409155Z"
+            },
+            {
+              "create_date": "2025-08-16T19:21:53.409155Z",
+              "description": "Ensure color changes do not affect cube logic (e.g., solving state detection).",
+              "id": "T008.001.003",
+              "update_date": "2025-08-16T19:21:53.409155Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:21:53.409155Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:21:53.409155Z"
+    },
+    {
+      "clarifications": [
+        "Is 'session' defined as a single browser tab, or the entire browser instance (meaning all tabs and windows)?",
+        "Should any temporary state, like the current scrambled cube state, persist if the tab is accidentally closed and reopened, or should it always be fresh?"
+      ],
+      "create_date": "2025-08-16T19:21:53.409155Z",
+      "definition_of_done": [
+        "Closing and reopening the browser tab resets the cube to its default state and clears all user settings/progress.",
+        "No user-specific data (e.g., solve times, custom colors, cube size) is stored locally (e.g., Local Storage, IndexedDB) or remotely on persistent storage."
+      ],
+      "description": "The application shall not persist any user progress or settings between browser sessions.",
+      "id": "NFR002",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:21:53.409155Z",
+          "description": "As a developer, I want to ensure the application starts fresh with default settings on each launch, so that there's no need for data persistence mechanisms.",
+          "id": "S002.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:21:53.409155Z",
+              "description": "Verify that no data is written to localStorage, sessionStorage, cookies, or IndexedDB.",
+              "id": "T002.001.001",
+              "update_date": "2025-08-16T19:21:53.409155Z"
+            },
+            {
+              "create_date": "2025-08-16T19:21:53.409155Z",
+              "description": "Implement initialization logic to set default cube state and settings on application load.",
+              "id": "T002.001.002",
+              "update_date": "2025-08-16T19:21:53.409155Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:21:53.409155Z"
+        }
+      ],
+      "type": "Non-Functional Requirement",
+      "update_date": "2025-08-16T19:21:53.409155Z"
+    }
+  ]
 }
