@@ -6,7 +6,8 @@
       "definition_of_done": [
         "Users can see a visual representation of a Rubik's Cube (defaulting to 3x3x3).",
         "Users can interact with the cube to perform standard rotations of faces.",
-        "The cube's state correctly updates after each rotation."
+        "The cube's state correctly updates after each rotation.",
+        "The cube has a matte finish by default."
       ],
       "description": "The system shall provide a fully interactive 3D Rubik's Cube accessible via a web browser.",
       "id": "FR001",
@@ -39,7 +40,7 @@
         }
       ],
       "type": "Functional Requirement",
-      "update_date": "2025-08-16T19:12:57.135111Z"
+      "update_date": "2025-08-16T19:35:45.525944Z"
     },
     {
       "clarifications": [],
@@ -461,14 +462,12 @@
       "update_date": "2025-08-16T19:28:29.973906Z"
     },
     {
-      "clarifications": [
-        "Should there be predefined color palettes for common color blindness types, or free color selection?",
-        "How will the color selection UI be presented (e.g., color pickers, dropdowns)?"
-      ],
+      "clarifications": [],
       "create_date": "2025-08-16T19:21:53.409155Z",
       "definition_of_done": [
         "A user interface option is available to change cube face colors.",
-        "Users can select new colors for each of the six faces.",
+        "Users can select new colors for each of the six faces using a color picker.",
+        "Users can select from predefined color palettes, including accessibility options for color blindness.",
         "The chosen colors are applied correctly to the cube faces.",
         "The color changes persist for the current session."
       ],
@@ -497,13 +496,25 @@
               "description": "Ensure color changes do not affect cube logic (e.g., solving state detection).",
               "id": "T008.001.003",
               "update_date": "2025-08-16T19:21:53.409155Z"
+            },
+            {
+              "create_date": "2025-08-16T19:32:44.056821Z",
+              "description": "Implement a full color picker UI for each of the six cube faces.",
+              "id": "T008.001.004",
+              "update_date": "2025-08-16T19:32:44.056821Z"
+            },
+            {
+              "create_date": "2025-08-16T19:32:44.056821Z",
+              "description": "Implement a selection of predefined color palettes, including options suitable for common forms of color blindness.",
+              "id": "T008.001.005",
+              "update_date": "2025-08-16T19:32:44.056821Z"
             }
           ],
-          "update_date": "2025-08-16T19:21:53.409155Z"
+          "update_date": "2025-08-16T19:32:44.056821Z"
         }
       ],
       "type": "Functional Requirement",
-      "update_date": "2025-08-16T19:21:53.409155Z"
+      "update_date": "2025-08-16T19:32:44.056821Z"
     },
     {
       "clarifications": [
@@ -541,6 +552,123 @@
       ],
       "type": "Non-Functional Requirement",
       "update_date": "2025-08-16T19:21:53.409155Z"
+    },
+    {
+      "clarifications": [
+        "What specific types of user actions should be undoable/redoable (e.g., individual face turns, full 3D cube rotations, scramble button presses, auto-solve initiation)?",
+        "How many steps of history should be maintained (e.g., last 10 moves, unlimited)?",
+        "Should undo/redo affect the timer in FR004?"
+      ],
+      "create_date": "2025-08-16T19:35:45.525944Z",
+      "definition_of_done": [
+        "A visible 'Undo' button is available and active when previous moves exist.",
+        "A visible 'Redo' button is available and active when undone moves exist.",
+        "Clicking 'Undo' reverts the cube to its previous state.",
+        "Clicking 'Redo' reapplies the last undone move.",
+        "The cube's state accurately reflects the undo/redo operation."
+      ],
+      "description": "The system shall provide 'undo' and 'redo' functionality for user actions.",
+      "id": "FR009",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:35:45.525944Z",
+          "description": "As a user, I want to undo my last action so I can correct a mistake or explore alternative moves.",
+          "id": "S009.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:35:45.525944Z",
+              "description": "Implement a history stack to record cube states or transformations.",
+              "id": "T009.001.001",
+              "update_date": "2025-08-16T19:35:45.525944Z"
+            },
+            {
+              "create_date": "2025-08-16T19:35:45.525944Z",
+              "description": "Develop logic to reverse the last cube operation (e.g., face rotation, 3D view rotation).",
+              "id": "T009.001.002",
+              "update_date": "2025-08-16T19:35:45.525944Z"
+            },
+            {
+              "create_date": "2025-08-16T19:35:45.525944Z",
+              "description": "Design and implement an 'Undo' button UI element.",
+              "id": "T009.001.003",
+              "update_date": "2025-08-16T19:35:45.525944Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:35:45.525944Z"
+        },
+        {
+          "create_date": "2025-08-16T19:35:45.525944Z",
+          "description": "As a user, I want to redo an action that I previously undid, so I can easily revert my decision.",
+          "id": "S009.002",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:35:45.525944Z",
+              "description": "Implement logic to reapply a move from the redo stack.",
+              "id": "T009.002.001",
+              "update_date": "2025-08-16T19:35:45.525944Z"
+            },
+            {
+              "create_date": "2025-08-16T19:35:45.525944Z",
+              "description": "Design and implement a 'Redo' button UI element.",
+              "id": "T009.002.002",
+              "update_date": "2025-08-16T19:35:45.525944Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:35:45.525944Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:35:45.525944Z"
+    },
+    {
+      "clarifications": [
+        "What specific actions should trigger sound effects (e.g., individual face rotations, cube scrambled, cube solved, hint activated, undo/redo)?",
+        "Should the sound effects be realistic (e.g., plastic clicking) or more stylized?"
+      ],
+      "create_date": "2025-08-16T19:35:45.525944Z",
+      "definition_of_done": [
+        "Classic Rubik's Cube sound effects play correctly for cube rotations, scramble, and solve events.",
+        "Sound effects always play at full volume (no mute or volume controls needed).",
+        "Sound levels are balanced and non-intrusive."
+      ],
+      "description": "The system shall incorporate classic Rubik's Cube sound effects for key user interactions and cube events.",
+      "id": "FR010",
+      "stories": [
+        {
+          "create_date": "2025-08-16T19:35:45.525944Z",
+          "description": "As a user, I want to hear distinct classic Rubik's Cube sound effects when I interact with the cube or when significant events occur, so the application feels more immersive and responsive.",
+          "id": "S010.001",
+          "tasks": [
+            {
+              "create_date": "2025-08-16T19:35:45.525944Z",
+              "description": "Source or create classic sound assets for cube face rotations.",
+              "id": "T010.001.001",
+              "update_date": "2025-08-16T19:37:53.920530Z"
+            },
+            {
+              "create_date": "2025-08-16T19:35:45.525944Z",
+              "description": "Source or create a classic sound asset for the cube scrambling action.",
+              "id": "T010.001.002",
+              "update_date": "2025-08-16T19:37:53.920530Z"
+            },
+            {
+              "create_date": "2025-08-16T19:35:45.525944Z",
+              "description": "Source or create a classic sound asset for successfully solving the cube.",
+              "id": "T010.001.003",
+              "update_date": "2025-08-16T19:37:53.920530Z"
+            },
+            {
+              "create_date": "2025-08-16T19:35:45.525944Z",
+              "description": "Implement audio playback functionality to trigger sounds on relevant events at full volume.",
+              "id": "T010.001.004",
+              "update_date": "2025-08-16T19:37:53.920530Z"
+            }
+          ],
+          "update_date": "2025-08-16T19:37:53.920530Z"
+        }
+      ],
+      "type": "Functional Requirement",
+      "update_date": "2025-08-16T19:37:53.920530Z"
     }
   ]
 }
