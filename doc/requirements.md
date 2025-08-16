@@ -84,18 +84,16 @@ _Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T19:12:57.135111Z_
 - **T003.001.003:** Apply the generated scramble to the 3D cube model and its internal state. (_Updated: 2025-08-16T19:12:57.135111Z_)
 
 ## FR004: The system shall track and display the user's solve time for the Rubik's Cube. (Functional Requirement)
-_Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T19:12:57.135111Z_
+_Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T20:22:07.031842Z_
 
 ### Definition of Done
 - A visible timer is displayed on the screen.
-- The timer automatically starts when the user makes the first move on a scrambled cube.
-- The timer automatically stops when the cube reaches a solved state.
+- The timer automatically starts from the very first user movement.
+- The timer automatically stops immediately upon the last move that brings the cube to a solved state.
 - The final solve time is displayed accurately upon completion.
 
 ### Clarifications Needed
 - What precision is required for the timer (e.g., seconds, milliseconds)?
-- Should solve times be stored (e.g., in local storage, for a history/leaderboard)?
-- What triggers the timer to start and stop precisely (e.g., first move after scramble, last move to solve)?
 
 ### Stories
 #### S004.001: As a user, I want my solve time to be measured and displayed, so I can challenge myself and track my solving speed.
@@ -108,7 +106,7 @@ _Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T19:12:57.135111Z_
 - **T004.001.004:** Display the elapsed time prominently on the user interface. (_Updated: 2025-08-16T19:12:57.135111Z_)
 
 ## FR005: The system shall provide an automatic solving feature with animated moves and selectable algorithms. (Functional Requirement)
-_Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T19:19:04.664831Z_
+_Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T20:22:07.031842Z_
 
 ### Definition of Done
 - A 'Solve' button is available on the UI.
@@ -117,10 +115,11 @@ _Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T19:19:04.664831Z_
 - The cube successfully reaches a solved state after the animation sequence.
 - The animation clearly shows each individual move in the solving algorithm.
 - Users can adjust the animation speed of the automatic solve.
+- The automatic solve process can be paused and resumed by the user.
+- The automatic solve process can be advanced step-by-step using a dedicated button.
 
 ### Clarifications Needed
-- Can the auto-solving process be paused or stopped by the user once initiated?
-- Does the solver need to work for all custom cube sizes (1x1 to 100x100) or only standard sizes (e.g., 3x3)?
+- Does the solver need to work for all custom cube sizes (1x1 to 100x100) or only standard sizes (e.g., 3x3, 4x4, 5x5)? Please specify the exact range of 'standard sizes'.
 
 ### Stories
 #### S005.001: As a user, I want to be able to watch the cube solve itself with animated movements, so I can learn the solution steps or simply see the cube solved.
@@ -148,19 +147,27 @@ _Created: 2025-08-16T19:19:04.664831Z, Updated: 2025-08-16T19:19:04.664831Z_
 - **T005.003.001:** Implement a UI control (e.g., slider) for adjusting animation speed. (_Updated: 2025-08-16T19:19:04.664831Z_)
 - **T005.003.002:** Integrate the animation speed control with the cube's rotation and transition logic. (_Updated: 2025-08-16T19:19:04.664831Z_)
 
+#### S005.004: As a user, I want to be able to pause, resume, and step through the automatic solving animation, so I can better understand the solution or control the playback.
+_Created: 2025-08-16T20:22:07.031842Z, Updated: 2025-08-16T20:22:07.031842Z_
+
+##### Tasks
+- **T005.004.001:** Implement 'Pause' and 'Resume' controls for the auto-solve animation. (_Updated: 2025-08-16T20:22:07.031842Z_)
+- **T005.004.002:** Implement a 'Step Forward' button to advance the animation one move at a time. (_Updated: 2025-08-16T20:22:07.031842Z_)
+- **T005.004.003:** Ensure the cube's internal state accurately reflects the state at each step when stepping through. (_Updated: 2025-08-16T20:22:07.031842Z_)
+
 ## FR006: The system shall provide hints to assist the user in solving the cube, based on chosen algorithms. (Functional Requirement)
-_Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T19:16:41.535477Z_
+_Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T20:22:07.031842Z_
 
 ### Definition of Done
 - A 'Hint' button or equivalent mechanism is available.
 - Upon requesting a hint, the system displays the next recommended move to progress towards a solved state, based on the selected solving algorithm.
 - The hint provided is accurate for the current cube configuration.
+- Hints are available for all standard cube sizes (e.g., 2x2, 3x3, 4x4, 5x5).
 
 ### Clarifications Needed
 - What level of hints should be provided (e.g., single next move, entire step in an algorithm, visual highlight)?
 - How are hints triggered (e.g., dedicated 'Hint' button, automatically when stuck for a period)?
-- Should hints be based on the currently selected auto-solving algorithm, or always use a specific 'beginner-friendly' approach?
-- Does the hint system need to work for all custom cube sizes (1x1 to 100x100) or only standard sizes (e.g., 3x3)?
+- Does the hint system need to work for all custom cube sizes (1x1 to 100x100) or only standard sizes (e.g., 3x3, 4x4, 5x5)? Please specify the exact range of 'standard sizes'.
 
 ### Stories
 #### S006.001: As a user, I want to receive hints when I am stuck, so I can learn the solving process and complete the puzzle.
@@ -214,25 +221,6 @@ _Created: 2025-08-16T19:21:53.409155Z, Updated: 2025-08-16T19:32:44.056821Z_
 - **T008.001.004:** Implement a full color picker UI for each of the six cube faces. (_Updated: 2025-08-16T19:32:44.056821Z_)
 - **T008.001.005:** Implement a selection of predefined color palettes, including options suitable for common forms of color blindness. (_Updated: 2025-08-16T19:32:44.056821Z_)
 
-## NFR002: The application shall not persist any user progress or settings between browser sessions. (Non-Functional Requirement)
-_Created: 2025-08-16T19:21:53.409155Z, Updated: 2025-08-16T19:21:53.409155Z_
-
-### Definition of Done
-- Closing and reopening the browser tab resets the cube to its default state and clears all user settings/progress.
-- No user-specific data (e.g., solve times, custom colors, cube size) is stored locally (e.g., Local Storage, IndexedDB) or remotely on persistent storage.
-
-### Clarifications Needed
-- Is 'session' defined as a single browser tab, or the entire browser instance (meaning all tabs and windows)?
-- Should any temporary state, like the current scrambled cube state, persist if the tab is accidentally closed and reopened, or should it always be fresh?
-
-### Stories
-#### S002.001: As a developer, I want to ensure the application starts fresh with default settings on each launch, so that there's no need for data persistence mechanisms.
-_Created: 2025-08-16T19:21:53.409155Z, Updated: 2025-08-16T19:21:53.409155Z_
-
-##### Tasks
-- **T002.001.001:** Verify that no data is written to localStorage, sessionStorage, cookies, or IndexedDB. (_Updated: 2025-08-16T19:21:53.409155Z_)
-- **T002.001.002:** Implement initialization logic to set default cube state and settings on application load. (_Updated: 2025-08-16T19:21:53.409155Z_)
-
 ## FR009: The system shall provide 'undo' and 'redo' functionality for user actions. (Functional Requirement)
 _Created: 2025-08-16T19:35:45.525944Z, Updated: 2025-08-16T19:35:45.525944Z_
 
@@ -285,3 +273,26 @@ _Created: 2025-08-16T19:35:45.525944Z, Updated: 2025-08-16T19:37:53.920530Z_
 - **T010.001.002:** Source or create a classic sound asset for the cube scrambling action. (_Updated: 2025-08-16T19:37:53.920530Z_)
 - **T010.001.003:** Source or create a classic sound asset for successfully solving the cube. (_Updated: 2025-08-16T19:37:53.920530Z_)
 - **T010.001.004:** Implement audio playback functionality to trigger sounds on relevant events at full volume. (_Updated: 2025-08-16T19:37:53.920530Z_)
+
+## FR011: The system shall occasionally play a short clip of Rick Astley's 'Never Gonna Give You Up' (a 'Rick Roll'). (Functional Requirement)
+_Created: 2025-08-16T20:08:17.587803Z, Updated: 2025-08-16T20:22:07.031842Z_
+
+### Definition of Done
+- A short audio clip of 'Never Gonna Give You Up' is included in the application assets.
+- The Rick Roll plays at a completely unpredictable moment triggered by any user interaction that involves a mouse click or a hotkey cube-turning action.
+- The original user action (that triggered the Rick Roll) completes successfully after the Rick Roll audio event.
+- The Rick Roll audio plays at full volume and cannot be muted independently.
+- The Rick Roll does not interfere with core cube functionality or state.
+- The Rick Roll is accompanied by a visual ASCII video representation of the music video.
+
+### Stories
+#### S011.001: As a user, I want to be surprised by a random Rick Roll so that the application has a fun, unexpected element.
+_Created: 2025-08-16T20:08:17.587803Z, Updated: 2025-08-16T20:22:07.031842Z_
+
+##### Tasks
+- **T011.001.001:** Source a short, recognizable audio clip of 'Never Gonna Give You Up'. (_Updated: 2025-08-16T20:08:17.587803Z_)
+- **T011.001.002:** Implement a truly random and unpredictable trigger mechanism that activates on any user interaction involving a mouse click or hotkey cube-turning action. (_Updated: 2025-08-16T20:14:29.301134Z_)
+- **T011.001.003:** Integrate the Rick Roll audio playback into the existing sound system, ensuring full volume and no independent mute. (_Updated: 2025-08-16T20:08:17.587803Z_)
+- **T011.001.004:** Ensure that the user's intended action (which triggered the Rick Roll) is executed immediately after the Rick Roll audio clip completes. (_Updated: 2025-08-16T20:11:52.730366Z_)
+- **T011.001.005:** Source or convert a short segment of the 'Never Gonna Give You Up' music video into an ASCII video format. (_Updated: 2025-08-16T20:22:07.031842Z_)
+- **T011.001.006:** Implement logic to display the ASCII video concurrently with the audio playback. (_Updated: 2025-08-16T20:22:07.031842Z_)
