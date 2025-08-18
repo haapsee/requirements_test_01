@@ -47,11 +47,6 @@ _Created: 2025-08-16T19:10:11.868733Z, Updated: 2025-08-16T19:10:11.868733Z_
 - Performance optimizations (e.g., culling, instance rendering) are implemented where they offer significant gains without substantial development overhead.
 - The application does not crash or freeze due to excessive memory or CPU usage for any supported cube size.
 
-### Clarifications Needed
-- What constitutes 'common devices' for testing performance (e.g., specific CPU/GPU ranges, memory)?
-- Are there specific target metrics for 'responsiveness' (e.g., target FPS for small vs. large cubes)?
-- What is the definition of 'easy to achieve' in terms of development effort vs. performance gain?
-
 ### Stories
 #### S001.001: As a user, I want the cube to feel smooth and responsive during interactions, even for larger sizes, so that the experience is enjoyable.
 _Created: 2025-08-16T19:10:11.868733Z, Updated: 2025-08-16T19:10:11.868733Z_
@@ -70,10 +65,6 @@ _Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T19:12:57.135111Z_
 - Clicking 'Scramble' shuffles the cube into a solvable, non-solved state.
 - The scrambled state is unpredictable and appears random to the user.
 
-### Clarifications Needed
-- What types of scramble sequences should be generated (e.g., random moves, specific length, WCA notation compliance)?
-- Should the scrambling process be animated, or instantly applied?
-
 ### Stories
 #### S003.001: As a user, I want to be able to scramble the cube with a simple action, so I can start a new puzzle challenge.
 _Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T19:12:57.135111Z_
@@ -91,9 +82,6 @@ _Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T20:22:07.031842Z_
 - The timer automatically starts from the very first user movement.
 - The timer automatically stops immediately upon the last move that brings the cube to a solved state.
 - The final solve time is displayed accurately upon completion.
-
-### Clarifications Needed
-- What precision is required for the timer (e.g., seconds, milliseconds)?
 
 ### Stories
 #### S004.001: As a user, I want my solve time to be measured and displayed, so I can challenge myself and track my solving speed.
@@ -117,9 +105,6 @@ _Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T20:22:07.031842Z_
 - Users can adjust the animation speed of the automatic solve.
 - The automatic solve process can be paused and resumed by the user.
 - The automatic solve process can be advanced step-by-step using a dedicated button.
-
-### Clarifications Needed
-- Does the solver need to work for all custom cube sizes (1x1 to 100x100) or only standard sizes (e.g., 3x3, 4x4, 5x5)? Please specify the exact range of 'standard sizes'.
 
 ### Stories
 #### S005.001: As a user, I want to be able to watch the cube solve itself with animated movements, so I can learn the solution steps or simply see the cube solved.
@@ -163,11 +148,6 @@ _Created: 2025-08-16T19:12:57.135111Z, Updated: 2025-08-16T20:22:07.031842Z_
 - Upon requesting a hint, the system displays the next recommended move to progress towards a solved state, based on the selected solving algorithm.
 - The hint provided is accurate for the current cube configuration.
 - Hints are available for all standard cube sizes (e.g., 2x2, 3x3, 4x4, 5x5).
-
-### Clarifications Needed
-- What level of hints should be provided (e.g., single next move, entire step in an algorithm, visual highlight)?
-- How are hints triggered (e.g., dedicated 'Hint' button, automatically when stuck for a period)?
-- Does the hint system need to work for all custom cube sizes (1x1 to 100x100) or only standard sizes (e.g., 3x3, 4x4, 5x5)? Please specify the exact range of 'standard sizes'.
 
 ### Stories
 #### S006.001: As a user, I want to receive hints when I am stuck, so I can learn the solving process and complete the puzzle.
@@ -231,11 +211,6 @@ _Created: 2025-08-16T19:35:45.525944Z, Updated: 2025-08-16T19:35:45.525944Z_
 - Clicking 'Redo' reapplies the last undone move.
 - The cube's state accurately reflects the undo/redo operation.
 
-### Clarifications Needed
-- What specific types of user actions should be undoable/redoable (e.g., individual face turns, full 3D cube rotations, scramble button presses, auto-solve initiation)?
-- How many steps of history should be maintained (e.g., last 10 moves, unlimited)?
-- Should undo/redo affect the timer in FR004?
-
 ### Stories
 #### S009.001: As a user, I want to undo my last action so I can correct a mistake or explore alternative moves.
 _Created: 2025-08-16T19:35:45.525944Z, Updated: 2025-08-16T19:35:45.525944Z_
@@ -259,10 +234,6 @@ _Created: 2025-08-16T19:35:45.525944Z, Updated: 2025-08-16T19:37:53.920530Z_
 - Classic Rubik's Cube sound effects play correctly for cube rotations, scramble, and solve events.
 - Sound effects always play at full volume (no mute or volume controls needed).
 - Sound levels are balanced and non-intrusive.
-
-### Clarifications Needed
-- What specific actions should trigger sound effects (e.g., individual face rotations, cube scrambled, cube solved, hint activated, undo/redo)?
-- Should the sound effects be realistic (e.g., plastic clicking) or more stylized?
 
 ### Stories
 #### S010.001: As a user, I want to hear distinct classic Rubik's Cube sound effects when I interact with the cube or when significant events occur, so the application feels more immersive and responsive.
